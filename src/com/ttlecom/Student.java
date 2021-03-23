@@ -19,17 +19,8 @@ public class Student {
 		size++;
 		setId(size);
 		setName(name);
-		if (theoreticalScore < 0 || theoreticalScore > 10) {
-			setTheoreticalScore(0);
-		} else {
-			setTheoreticalScore(theoreticalScore);
-		}
-		;
-		if (practicalScore < 0 || practicalScore > 10) {
-			setPracticalScore(0);
-		} else {
-			setPracticalScore(practicalScore);
-		}
+		setTheoreticalScore(theoreticalScore);
+		setPracticalScore(practicalScore);
 	}
 
 	public int getId() {
@@ -45,7 +36,11 @@ public class Student {
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		if (name != null) {
+			this.name = name;
+		} else {
+			this.name = "unknown";
+		}
 	}
 
 	public double getTheoreticalScore() {
@@ -53,7 +48,11 @@ public class Student {
 	}
 
 	public void setTheoreticalScore(double theoreticalScore) {
-		this.theoreticalScore = theoreticalScore;
+		if ((theoreticalScore < 0) || (theoreticalScore > 10)) {
+			this.theoreticalScore = 0;
+		} else {
+			this.theoreticalScore = theoreticalScore;
+		}
 	}
 
 	public float getPracticalScore() {
@@ -61,7 +60,11 @@ public class Student {
 	}
 
 	public void setPracticalScore(double practicalScore) {
-		this.practicalScore = practicalScore;
+		if ((practicalScore < 0) || (practicalScore > 10)) {
+			this.practicalScore = 0;
+		} else {
+			this.practicalScore = practicalScore;
+		}
 	}
 
 	public float getAverageScore() {
