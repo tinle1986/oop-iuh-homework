@@ -50,7 +50,7 @@ public class CDList {
 	}
 
 	public void initializeCDList(int size) {
-		AtomicInteger count = new AtomicInteger();
+		AtomicInteger count = new AtomicInteger(1);
 		AtomicInteger randomCode = new AtomicInteger();
 		while (count.get() <= size) {
 			randomCode.set((int) Math.floor(Math.random() * 999999) + 1);
@@ -66,7 +66,6 @@ public class CDList {
 		if (isNotDuplicate(this.cdList, newCD.getId())) {
 			this.cdList.add(newCD);
 			System.out.println("Added the new CD successfully!");
-			return;
 		}
 		System.out.println("Cannot add the new CD because of ID duplicate!");
 	}

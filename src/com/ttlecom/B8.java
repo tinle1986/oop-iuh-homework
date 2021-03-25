@@ -44,7 +44,8 @@ public class B8 {
 			cd.setTitle(titleList.get(randomIndex));
 			titleList.remove(randomIndex);
 		}
-		
+
+
 		// set no. of tracks
 		for (CD cd: seriesA.getCdList()) {
 			int randomNum = (int) Math.floor(Math.random() * (15 - 10)) + 10;
@@ -57,7 +58,7 @@ public class B8 {
 		System.out.println(cd3.toString());
 
 
-		// sort price descendingly
+		// sort price descending
 		System.out.println("After sorting by price descending:");
 		seriesA.sortCdListByPriceDesc();
 		System.out.println(seriesA.toString());

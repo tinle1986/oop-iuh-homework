@@ -72,6 +72,6 @@ public class CD {
 
 	@Override
 	public String toString() {
-		return String.format("%10d %20s %10d %16f", getId(), getTitle(), getNumberOfTracks(), getPrice());
+		return String.format("%10d %30s %10d %,16.2f", getId(), getTitle(), getNumberOfTracks(), getPrice());
 	}
 }
