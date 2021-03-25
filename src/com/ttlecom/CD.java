@@ -1,5 +1,7 @@
 package com.ttlecom;
 
+import java.util.Comparator;
+
 public class CD {
 	private int id;
 	private String title;
@@ -34,10 +36,10 @@ public class CD {
 	}
 
 	public void setId(int id) {
-		if (id <= 0 || id > 999999) {
+		if (id <= 0) {
 			this.id = 999999;
 		} else {
-			this.id = id;
+			this.id = Math.min(999999, id);
 		}
 	}
 
@@ -56,6 +58,20 @@ public class CD {
 	public void setPrice(float price) {
 		this.price = Math.max(price, 0);
 	}
+
+	public static Comparator<CD> titleComparator = new Comparator<CD>() {
+		@Override
+		public int compare(CD cd1, CD cd2) {
+			String cd1Title = cd1.getTitle().toUpperCase();
+			String cd2TItle = cd2.getTitle().toUpperCase();
+
+			// ascending order
+			return cd1Title.compareTo(cd2TItle);
+
+			// descending order
+			// return cd2TItle.compareTo(cd1Title);
+		}
+	};
 
 	@Override
 	public String toString() {
