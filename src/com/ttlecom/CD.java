@@ -59,18 +59,15 @@ public class CD {
 		this.price = Math.max(price, 0);
 	}
 
-	public static Comparator<CD> titleComparator = new Comparator<CD>() {
-		@Override
-		public int compare(CD cd1, CD cd2) {
-			String cd1Title = cd1.getTitle().toUpperCase();
-			String cd2TItle = cd2.getTitle().toUpperCase();
+	public static Comparator<CD> titleComparator = (cd1, cd2) -> {
+		String cd1Title = cd1.getTitle().toUpperCase();
+		String cd2Title = cd2.getTitle().toUpperCase();
 
-			// ascending order
-			return cd1Title.compareTo(cd2TItle);
+		// ascending order
+		return cd1Title.compareTo(cd2Title);
 
-			// descending order
-			// return cd2TItle.compareTo(cd1Title);
-		}
+		// descending order
+		// return cd2Title.compareTo(cd1Title);
 	};
 
 	@Override

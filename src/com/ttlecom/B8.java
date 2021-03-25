@@ -8,7 +8,6 @@ import java.util.Random;
 public class B8 {
 	public static void main(String[] args) {
 		// initialize the list
-		float randomScale;
 		int price = 50000;
 		List<String> titleList = new LinkedList<>(Arrays.asList(
 						"As the spring", "The new beginning",
@@ -35,7 +34,7 @@ public class B8 {
 
 		// set prices
 		for (CD cd : seriesA.getCdList()) {
-			randomScale = random.nextFloat() * (5 - 1) + 1;
+			float randomScale = random.nextFloat() * (5 - 1) + 1;
 			cd.setPrice(price * randomScale);
 		}
 
@@ -44,6 +43,12 @@ public class B8 {
 			int randomIndex = (int) Math.floor(Math.random() * titleList.size());
 			cd.setTitle(titleList.get(randomIndex));
 			titleList.remove(randomIndex);
+		}
+		
+		// set no. of tracks
+		for (CD cd: seriesA.getCdList()) {
+			int randomNum = (int) Math.floor(Math.random() * (15 - 10)) + 10;
+			cd.setNumberOfTracks(randomNum);
 		}
 
 
@@ -60,7 +65,10 @@ public class B8 {
 		System.out.println("After sorting by title ascending");
 		seriesA.sortCdListByTitleAsc();
 		System.out.println(seriesA.toString());
-
+		
+		// summary
+		System.out.printf("The number of CDs: %d%n", seriesA.countCDs());
+		System.out.printf("The number of tracks: %d%n", seriesA.countTracks());
 		System.out.printf("Total price is: %,.2f%n", seriesA.getTotalPrice());
 	}
 }
