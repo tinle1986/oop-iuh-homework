@@ -1,5 +1,7 @@
 package com.ttlecom;
 
+import java.util.Comparator;
+
 public class Worker {
 	private int id;
 	private String firstname;
@@ -21,10 +23,10 @@ public class Worker {
 		if (getNumberOfProducts() <= 199) {
 			return (float) (getNumberOfProducts() * 0.5);
 		} else if (getNumberOfProducts() <= 399) {
-			return (float) (getNumberOfProducts() * 0.55);
+			return (float) (199 * 0.5 + (getNumberOfProducts() - 199) * 0.55);
 		} else if (getNumberOfProducts() <= 599) {
-			return (float) (getNumberOfProducts() * 0.6);
-		} else return (float) (getNumberOfProducts() * 0.65);
+			return (float) (199 * 0.5 + 200 * 0.55 + (getNumberOfProducts() - 399) * 0.6);
+		} else return (float) (199 * 0.5 + 200 * 0.55 + 200 * 0.6 + (getNumberOfProducts() - 599) * 0.65);
 	}
 
 	public void setId(int id) {
@@ -70,6 +72,12 @@ public class Worker {
 	public int getNumberOfProducts() {
 		return numberOfProducts;
 	}
+
+	public static Comparator<Worker> numberOfProductsComparator = (wk1, wk2) -> {
+		int num1 = wk1.getNumberOfProducts();
+		int num2 = wk2.getNumberOfProducts();
+		return num2 - num1;
+	};
 
 	@Override
 	public String toString() {
