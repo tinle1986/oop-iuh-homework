@@ -1,10 +1,6 @@
 package com.ttlecom;
 
-import java.util.ArrayList;
-
 public class B10 {
-	private static final ArrayList<Product> inventory = new ArrayList<>();
-
 	public static void main(String[] args) {
 		// initialize products
 		Product apple = new Product(111111, "iPhone 11", 899);
@@ -24,22 +20,6 @@ public class B10 {
 		Product energizer = new Product(606060, "Energizer Powerbank", 52);
 //		System.out.println(energizer.toString());
 
-		inventory.add(apple);
-		inventory.add(samsung);
-		inventory.add(oppo);
-		inventory.add(vivo);
-		inventory.add(xiaomi);
-		inventory.add(bphone);
-		inventory.add(realme);
-		inventory.add(vsmart);
-		inventory.add(oneplus);
-		inventory.add(nokia);
-		inventory.add(huawei);
-		inventory.add(mobell);
-		inventory.add(itel);
-		inventory.add(masstel);
-		inventory.add(energizer);
-
 		// make purchasing
 		OrderDetail item1 = new OrderDetail(apple, 2);
 		OrderDetail item2 = new OrderDetail(samsung, 1);
@@ -55,6 +35,8 @@ public class B10 {
 		OrderDetail item11 = new OrderDetail(realme, 5);
 		OrderDetail item12 = new OrderDetail(nokia, 11);
 		OrderDetail item13 = new OrderDetail(vsmart, 14);
+		OrderDetail item14 = new OrderDetail(mobell, 21);
+		OrderDetail item15 = new OrderDetail(huawei, 30);
 
 		// make order
 		Order order1 = new Order();
@@ -73,6 +55,8 @@ public class B10 {
 		order2.addLineItem(item11);
 		order2.addLineItem(item12);
 		order2.addLineItem(item13);
+		order2.addLineItem(item14);
+		order2.addLineItem(item15);
 
 		// print order
 		System.out.println(order1.toString());
