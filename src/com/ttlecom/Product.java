@@ -5,9 +5,6 @@ public class Product {
 	private String description;
 	private double price;
 
-	public Product() {
-	}
-
 	public Product(int id, String description, double price) {
 		setId(id);
 		setDescription(description);
