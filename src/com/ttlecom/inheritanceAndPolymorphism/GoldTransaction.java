@@ -3,9 +3,9 @@ package com.ttlecom.inheritanceAndPolymorphism;
 public class GoldTransaction extends Transaction {
 	private GoldType goldType;
 
-	public GoldTransaction(int id, String date, DollarType unitPrice, int quantity, GoldType goldType) {
-		super(id, date, unitPrice, quantity);
-		this.goldType = goldType;
+	public GoldTransaction(int id, String date, long quantity, GoldType goldType) {
+		super(id, date, quantity);
+		setGoldType(goldType);
 	}
 
 	public GoldType getGoldType() {
@@ -14,24 +14,30 @@ public class GoldTransaction extends Transaction {
 
 	public void setGoldType(GoldType goldType) {
 		this.goldType = goldType;
+		switch (getGoldType()) {
+			case K24 -> setUnitPrice(52000000);
+			case K18 -> setUnitPrice(48500000);
+			default -> setUnitPrice(55000000);
+		}
 	}
 
-//	@Override
-//	public DollarType getUnitPrice() {
-//		switch (getGoldType()) {
-//			case K24 -> {
-//				return 4000000;
-//			}
-//			case K18 -> {
-//				return 38000000;
-//			}
-//			default -> {
-//				return 50000000;
-//			}
-//		}
-//	}
-//
-//	public float getPrice() {
-//		return getUnitPrice() * getQuantity();
-//	}
+	public void setUnitPrice(float unitPrice) {
+		super.setUnitPrice(unitPrice);
+	}
+
+	@Override
+	public double getPrice() {
+		return getUnitPrice() * getQuantity();
+	}
+
+	@Override
+	public String toString() {
+		String goldType;
+		switch (getGoldType()) {
+			case K24 -> goldType = "24K";
+			case K18 -> goldType = "18K";
+			default -> goldType = "9999";
+		}
+		return String.format("Id: %d | Date: %s | Unit price: %,.2f VND | Q'ty: %,d | Gold type: %s | Amount: %,.2f VND%n", getId(), getDate(), getUnitPrice(), getQuantity(), goldType, getPrice());
+	}
 }
